@@ -71,3 +71,39 @@ module.exports = {
   "editor.formatOnSave": true
 }
 ```
+
+2.6 配置路径别名
+
+```bash
+pnpm add -D @types/node
+```
+
+```ts
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { defineConfig } from 'vite';
+
+const resolve = (dirName: string) => path.resolve(__dirname, dirName);
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': resolve('src'),
+    },
+  },
+});
+```
+
+> `vite.config.ts` 配置完成，别名生效，但是没有路径提示。需要在 `tsconfig.json` 的 `compilerOptions` 中添加配置才有提示
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
