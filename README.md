@@ -121,3 +121,33 @@ pnpm add -D sass
     >引入 `import styles from 'xxx.module.scss'` \
     >使用 `<div className={styles.class1}></div>`\
     >注意 `styles` 不可以解构赋值，因为 `import` 本身的 `import {} from 'xxx'` 就不是解构赋值，只是看起来像
+
+2.8 `axios` + `vite-plugin-mock`
+
+```bash
+pnpm add axios
+pnpm add -D vite-plugin-mock
+```
+
+新建 Mock 文件夹，与 src 同级
+
+`vite.config.ts`
+
+```ts
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import { viteMockServe } from 'vite-plugin-mock'
+
+// https://vitejs.dev/config/
+export default defineConfig(({ command }) => {
+  return {
+    plugins: [
+      react(),
+      viteMockServe({
+        mockPath: 'mock',
+        enable: command === 'serve',
+      })
+    ],
+  }
+});
+```

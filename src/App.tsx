@@ -1,5 +1,5 @@
-import { Button } from "antd";
-import { ArrowDownOutlined } from "@ant-design/icons";
+import { ArrowDownOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 
 function App() {
   return (
