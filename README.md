@@ -13,3 +13,14 @@ pnpm create vite react-admin --template react-ts
 ```bash
 pnpm add antd @ant-design/icons
 ```
+
+2.2 `tailwindcss`
+
+```bash
+pnpm add -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+- 如何解决 `antd` 样式与 `tailwindcss` 预设样式冲突?
+
+  `tailwind.config.js` 添加 `corePlugins: { preflight: false }`
