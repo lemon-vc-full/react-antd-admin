@@ -107,3 +107,17 @@ export default defineConfig({
   }
 }
 ```
+
+2.7 `sass`
+
+```bash
+pnpm add -D sass
+```
+
+- 如果在每个组件中引入 `xxx.scss`，这个会作用于全局样式
+
+  解决方法为模块化
+    >新建 `xxx.module.scss` \
+    >引入 `import styles from 'xxx.module.scss'` \
+    >使用 `<div className={styles.class1}></div>`\
+    >注意 `styles` 不可以解构赋值，因为 `import` 本身的 `import {} from 'xxx'` 就不是解构赋值，只是看起来像
