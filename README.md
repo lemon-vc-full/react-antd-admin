@@ -5,3 +5,11 @@
 ```bash
 pnpm create vite react-admin --template react-ts
 ```
+
+2. 安装依赖
+
+2.1 `antd`
+
+```bash
+pnpm add antd @ant-design/icons
+```
