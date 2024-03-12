@@ -1,3 +1,5 @@
+import { MockMethod } from 'vite-plugin-mock';
+
 const userList = [
   {
     userId: 1,
@@ -24,7 +26,7 @@ const userList = [
 ];
 
 // 用户登录假接口
-const loginApi = {
+const loginApi: MockMethod = {
   url: '/user/login', // 请求地址
   method: 'post',
   response: ({ body }) => {
@@ -45,7 +47,7 @@ const loginApi = {
 };
 
 // 获取用户信息假接口
-const userInfoApi = {
+const userInfoApi: MockMethod = {
   url: '/user/info', // 请求地址
   method: 'get',
   response: (request) => {
