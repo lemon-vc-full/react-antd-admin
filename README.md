@@ -43,6 +43,10 @@ module.exports = {
 
 2.4 `prettier`
 
+```bash
+pnpm add -D prettier eslint-config-prettier prettier-plugin-organize-imports prettier-plugin-tailwindcss 
+```
+
 `.prettierrc.cjs`
 
 ```cjs
