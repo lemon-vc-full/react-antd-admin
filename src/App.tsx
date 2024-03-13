@@ -1,15 +1,8 @@
-import { ArrowDownOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { useRoutes } from 'react-router-dom';
+import routes from './router';
 
 function App() {
-  return (
-    <div>
-      <h1>Hello, world!</h1>
-      <Button type="primary" icon={<ArrowDownOutlined />}>
-        Primary Button
-      </Button>
-    </div>
-  );
+  return useRoutes(routes);
 }
 
 export default App;
