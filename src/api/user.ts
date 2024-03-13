@@ -1,4 +1,4 @@
-import { request } from 'utils/net/request'
+import { request } from '@/utils/net/request'
 
 export function login(data: any) {
     return new Promise((resolve, reject) => {

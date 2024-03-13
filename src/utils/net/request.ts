@@ -55,4 +55,3 @@ export const cancelAllRequest = () => {
   }
   cacheRequest.clear();
 };
-
