@@ -2,7 +2,7 @@ import { DesktopOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -13,9 +13,9 @@ const items: MenuItem[] = [
     label: '权限管理',
     icon: <UserOutlined />,
     children: [
-      { key: '/user', label: '用户管理' },
-      { key: '/role', label: '角色管理' },
-      { key: '/menu', label: '菜单管理' },
+      { key: '/auth/user', label: '用户管理' },
+      { key: '/auth/role', label: '角色管理' },
+      { key: '/auth/menu', label: '菜单管理' },
     ],
   },
 ];
@@ -23,13 +23,15 @@ const items: MenuItem[] = [
 const rootSubmenuKeys = ['/auth'];
 
 function MainMenu() {
-  const [openKeys, setOpenKeys] = useState(['']);
-
   const navigateTo = useNavigate();
+  const { pathname } = useLocation();
 
-  const menuClick = (e: { keyPath: Array<string> }) => {
-    const path = e.keyPath.reduce((prev, current) => current + prev, '');
-    navigateTo(path);
+  let firstOpenKey = pathname.replace(/\/[^/]*$/, '');
+
+  const [openKeys, setOpenKeys] = useState([firstOpenKey]);
+
+  const menuClick = ({ key }: { key: string }) => {
+    navigateTo(key);
   };
 
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
@@ -40,9 +42,11 @@ function MainMenu() {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
+
   return (
     <Menu
       theme="dark"
+      defaultSelectedKeys={[pathname]}
       openKeys={openKeys}
       mode="inline"
       items={items}
