@@ -155,3 +155,9 @@ export default defineConfig(({ command }) => {
   }
 });
 ```
+
+2.9 `react-router-dom`
+
+```bash
+pnpm add react-router-dom -D
+```
