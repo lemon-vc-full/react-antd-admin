@@ -13,7 +13,11 @@ request.interceptors.request.use((config) => {
 request.interceptors.response.use(
   (response) => {
     removeCacheRequest(response.config);
-    return response;
+    if (response.data.code === 200) {
+      return response;
+    } else {
+      return Promise.reject(response.data.data);
+    }
   },
   (error) => {
     removeCacheRequest(error.config);

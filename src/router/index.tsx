@@ -3,6 +3,7 @@ import Role from '@/views/auth/role/Role';
 import User from '@/views/auth/user/User';
 import Home from '@/views/home/Home';
 import Layout from '@/views/layout/Layout';
+import Login from '@/views/login/Login';
 import NotFound from '@/views/not-found/NotFound';
 import Welcome from '@/views/welcome/WelCome';
 import type { RouteObject } from 'react-router-dom';
@@ -48,6 +49,10 @@ const routes: Array<RouteObject> = [
         element: <NotFound />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '*',

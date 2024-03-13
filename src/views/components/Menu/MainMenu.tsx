@@ -26,9 +26,19 @@ function MainMenu() {
   const navigateTo = useNavigate();
   const { pathname } = useLocation();
 
-  let firstOpenKey = pathname.replace(/\/[^/]*$/, '');
+  const setFirstOpenKeys = (pathname: string): string[] => {
+    const result: string[] = [];
+    const pathArr = pathname.split('/').filter(Boolean);
+    pathArr.reduce((prev, curr) => {
+      prev += `/${curr}`;
+      result.push(prev);
+      return prev;
+    }, '');
+    return result;
+  };
+  let firstOpenKeys = setFirstOpenKeys(pathname);
 
-  const [openKeys, setOpenKeys] = useState([firstOpenKey]);
+  const [openKeys, setOpenKeys] = useState(firstOpenKeys);
 
   const menuClick = ({ key }: { key: string }) => {
     navigateTo(key);
@@ -46,7 +56,7 @@ function MainMenu() {
   return (
     <Menu
       theme="dark"
-      defaultSelectedKeys={[pathname]}
+      defaultSelectedKeys={firstOpenKeys}
       openKeys={openKeys}
       mode="inline"
       items={items}
